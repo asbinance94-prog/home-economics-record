@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<base target="_top">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>السجل الإنجازي - قسم الاقتصاد المنزلي</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;500;600;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><div class="hwrap">
+<img class="logo" src="assets/images/logo.svg" alt="مدارس الموهوبين">
+<div><h1>السجل الإنجازي - قسم الاقتصاد المنزلي</h1>
+<p>مدرسة الموهوبين المتوسطة بنات (١) · قسم الاقتصاد المنزلي · العام الدراسي 2026/2027</p>
+<p>يُقدَّم للموجّهة الفنية خالدة</p>
+<span class="supbadge">عرض الموجهة (قراءة فقط)</span> </div></div></header>
+<main>
+<div class="bar">
+<button class="btn btn-p owner-only" onclick="openModal()">+ إضافة إنجاز جديد</button>
+<button class="btn btn-s owner-only" onclick="toggleSup()" id="supBtn">عرض الموجهة</button>
+<button class="btn btn-s" onclick="printRecord()">طباعة / PDF</button>
+</div>
+<div id="status" class="status" role="status" aria-live="polite" hidden></div>
+<div class="card"><h2>إحصائيات القسم</h2><div class="totals" id="totals"></div></div>
+<div class="card"><h2>أعضاء القسم</h2><div class="members" id="members"></div></div>
+<div class="card"><h2>الإنجازات حسب التصنيف</h2><div class="cats" id="cats"></div></div>
+<div class="card"><h2 id="listTitle">سجل الإنجازات</h2>
+<div class="filters"><select aria-label="العضوة" id="fMember" onchange="render()"></select><select aria-label="التصنيف" id="fCat" onchange="render()"></select></div>
+<p class="print-filter" id="printFilter"></p>
+<div id="list" style="margin-top:12px"></div></div>
+</main>
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="sheet">
+<h2 id="modalTitle">إضافة إنجاز جديد</h2>
+<label for="iMember">العضوة</label><select id="iMember"></select>
+<label for="iTitle">عنوان الإنجاز</label><input id="iTitle" placeholder="مثال: حضور دورة التغذية العلاجية">
+<div class="grid2"><div><label for="iCat">التصنيف</label><select id="iCat"></select></div>
+<div><label for="iDate">التاريخ</label><input type="date" id="iDate"></div></div>
+<label for="iDesc">الوصف</label><textarea id="iDesc" rows="3"></textarea>
+<label for="iFile">صورة أو ملف (شاهد)</label><input type="file" id="iFile" accept="image/jpeg,image/png,image/webp,image/gif,application/pdf,video/mp4,video/webm,video/quicktime">
+<label for="iLink">رابط (اختياري)</label><input id="iLink" type="url" placeholder="https://">
+<label for="departmentSecret">الرمز السري للقسم</label><input id="departmentSecret" type="password" autocomplete="off" maxlength="256"><p>يُستخدم للتحقق من الحفظ، ولا يُحفظ في المتصفح.</p>
+<div class="row"><button class="btn btn-p" id="saveBtn" onclick="save()">حفظ</button><button class="btn btn-s" onclick="closeModal()">إلغاء</button></div>
+</div></div>
+<script src="config.js"></script>
+<script src="app.js"></script>
+<noscript>فعّلي JavaScript لعرض السجل.</noscript>
+</body>
+</html>
